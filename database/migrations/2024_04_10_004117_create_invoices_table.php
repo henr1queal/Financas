@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('year');
             $table->boolean('closed')->default(0);
             $table->boolean('status')->default(0);
-            $table->bigInteger('card_id');
             $table->timestamps();
         });
 

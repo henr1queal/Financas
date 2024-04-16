@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('wallet_id')->default(1);
-            $table->bigInteger('user_id');
             $table->string('value');
             $table->timestamps();
         });
 
         Schema::table('salaries', function (Blueprint $table) {
-            $table->unsignedBigInteger('wallet_id');
+            $table->unsignedBigInteger('wallet_id')->default(1);
             $table->foreign('wallet_id')->references('id')->on('wallets');
             
             $table->unsignedBigInteger('user_id');

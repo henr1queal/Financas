@@ -17,12 +17,11 @@ return new class extends Migration
             $table->integer('last_four_digits');
             $table->integer('due_date');
             $table->string('limit');
-            $table->bigInteger('wallet_id')->default(1);
             $table->timestamps();
         });
 
         Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedBigInteger('wallet_id');
+            $table->unsignedBigInteger('wallet_id')->default(1);
             $table->foreign('wallet_id')->references('id')->on('wallets');
         });
     }

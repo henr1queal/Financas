@@ -16,12 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
-            $table->bigInteger('wallet_id')->default(1);
             $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('wallet_id');
+            $table->unsignedBigInteger('wallet_id')->default(1);
             $table->foreign('wallet_id')->references('id')->on('wallets');
         });
     }

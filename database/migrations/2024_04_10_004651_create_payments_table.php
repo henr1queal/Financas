@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('payment_method');
             $table->integer('installments')->default(1);
-            $table->bigInteger('card_id')->nullable();
             $table->string('value');
             $table->timestamps();
         });
 
         Schema::table('payments', function(Blueprint $table){
-            $table->unsignedBigInteger('card_id');
+            $table->unsignedBigInteger('card_id')->nullable();
             $table->foreign('card_id')->references('id')->on('cards');
         });
     }
