@@ -11,20 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salaries', function (Blueprint $table) {
+        Schema::create('monthly_fairs', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
             $table->integer('month');
             $table->integer('year');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
 
-        Schema::table('salaries', function (Blueprint $table) {
-            $table->unsignedBigInteger('wallet_id')->default(1);
-            $table->foreign('wallet_id')->references('id')->on('wallets');
-            
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('monthly_fairs', function (Blueprint $table) {
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
 
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('monthly_fairs');
     }
 };

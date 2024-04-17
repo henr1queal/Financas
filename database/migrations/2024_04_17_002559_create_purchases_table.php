@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('extra_money', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
-            $table->integer('month');
-            $table->integer('year');
+            $table->string('description');
             $table->timestamps();
+        });
+
+        Schema::table('purchases', function (Blueprint $table) {
+            $table->unsignedBigInteger('payment_id');
+            $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('extra_money');
+        Schema::dropIfExists('purchases');
     }
 };
