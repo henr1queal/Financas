@@ -18,6 +18,13 @@ return new class extends Migration
             $table->integer('year');
             $table->timestamps();
         });
+
+        Schema::table('extra_money', function(Blueprint $table){
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('wallet_id');
+            $table->foreign('wallet_id')->references('id')->on('wallets');
+        });
     }
 
     /**

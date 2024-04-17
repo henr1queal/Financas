@@ -18,11 +18,6 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->timestamps();
         });
-
-        Schema::table('monthly_fairs', function (Blueprint $table) {
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id')->references('id')->on('payments');
-        });
     }
 
     /**

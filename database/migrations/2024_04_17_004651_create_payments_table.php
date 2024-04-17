@@ -22,6 +22,14 @@ return new class extends Migration
         Schema::table('payments', function(Blueprint $table){
             $table->unsignedBigInteger('card_id')->nullable();
             $table->foreign('card_id')->references('id')->on('cards');
+            $table->unsignedBigInteger('ticket_id')->nullable();
+            $table->foreign('ticket_id')->references('id')->on('tickets');
+            $table->unsignedBigInteger('monthly_fair_id')->nullable();
+            $table->foreign('monthly_fair_id')->references('id')->on('monthly_fairs');
+            $table->unsignedBigInteger('essential_expense_id')->nullable();
+            $table->foreign('essential_expense_id')->references('id')->on('essential_expenses');
+            $table->unsignedBigInteger('purchase_id')->nullable();
+            $table->foreign('purchase_id')->references('id')->on('purchases');
         });
     }
 
