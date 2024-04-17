@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;  // add the User model
+use App\Models\User;
 
 class UserController extends Controller
 {
+    protected $user;
     public function __construct(User $user)
     {
         $this->user = $user;
